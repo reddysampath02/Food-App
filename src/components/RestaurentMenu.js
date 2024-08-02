@@ -35,8 +35,6 @@ const RestaurentMenu = () => {
         )
     );
 
-  console.log(categories);
-
   return (
     <div className="text-center">
       <div className="w-[50%] text-start ms-80">

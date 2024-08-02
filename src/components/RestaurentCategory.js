@@ -1,33 +1,47 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
+
 const RestaurantCategory = ({ data }) => {
   const [showItems, setShowItems] = useState(false);
-  const handelClick = () => {
+
+  const handleClick = () => {
     setShowItems(!showItems);
   };
-  // const categoriesArray = data?.categories.map((ca) => ca.itemCards)
-  //   ? data?.categories.map((ca) => ca.itemCards)
-  //   : [];
 
-  // const DDD = categoriesArray.card;
+  const renderItems = () => {
+    if (data?.categories && data.categories.length > 0) {
+      return data.categories.map((category, index) => (
+        <ItemList key={index} items={category.itemCards} />
+      ));
+    } else {
+      return <ItemList items={data.itemCards} />;
+    }
+  };
 
-  // console.log(DDD);
-
-  // console.log(categoriesArray);
+  const cardsLength = () => {
+    if (data?.categories && data.categories.length > 0) {
+      return data.categories.reduce(
+        (total, category) => total + category.itemCards.length,
+        0
+      );
+    } else {
+      return data.itemCards?.length || 0;
+    }
+  };
 
   return (
     <div>
       <div className="w-6/12 mx-auto my-3 bg-white shadow-lg p-4">
         <div
           className="flex justify-between cursor-pointer"
-          onClick={handelClick}
+          onClick={handleClick}
         >
           <span className="font-bold text-lg">
-            {data?.title}({data?.itemCards?.length})
+            {data?.title} ({cardsLength()})
           </span>
-          <span>▽</span>
+          <span>{showItems ? "▲" : "▽"}</span>
         </div>
-        {showItems && <ItemList items={data.itemCards} />}
+        {showItems && renderItems()}
       </div>
     </div>
   );

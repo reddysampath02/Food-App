@@ -3,8 +3,6 @@ import { CDN_URL } from "../Utils/constants";
 import { addItem } from "../Utils/cartSlice";
 
 const ItemList = ({ items }) => {
-  console.log(items);
-
   const dispatch = useDispatch();
 
   const handelAddItem = (item) => {

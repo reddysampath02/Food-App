@@ -13,8 +13,6 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [title, setTitle] = useState("");
 
-  console.log(listOfRestro);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -28,7 +26,6 @@ const Body = () => {
     setlistOfRestro(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    // console.log(json.data);
 
     setListOfFilterRestro(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -39,8 +36,6 @@ const Body = () => {
     setItemScrollData(json.data?.cards[0]?.card?.card?.imageGridCards?.info);
   };
   const onlineStatus = useOnlineStatus();
-
-  // console.log(itemScrollData);
 
   if (onlineStatus === false)
     return <h1>You are offline!!! Please check your internet Connection</h1>;
@@ -78,7 +73,6 @@ const Body = () => {
               );
 
               setListOfFilterRestro(filterRestro);
-              console.log(filterRestro);
             }}
           >
             Search

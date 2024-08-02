@@ -8,8 +8,6 @@ const Cart = () => {
   const cartMsg =
     "Your cart is empty You can go to home page to view more restaurants";
 
-  console.log(cartItems);
-
   const dispatch = useDispatch();
 
   const handelClearCart = (item) => {

@@ -1,5 +1,3 @@
-import { Form } from "react-router-dom";
-
 const Contact = () => {
   return (
     <div className="text-center w-[30%] mx-auto m-3">
